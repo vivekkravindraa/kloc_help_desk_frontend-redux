@@ -6,6 +6,7 @@ import Dashboard from '../dashboard/Dashboard';
 import Landing from './Landing';
 import Login from '../auth/Login';
 import Signup from '../auth/Signup';
+import Confirmation from '../auth/Confirmation';
 
 const routes = [
     {
@@ -22,6 +23,11 @@ const routes = [
         path: "/signup",
         exact: true,
         main: () => <Signup />
+    },
+    {
+        path: "/confirmation",
+        exact: true,
+        main: () => <Confirmation />
     }
 ];
 

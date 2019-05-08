@@ -12,7 +12,10 @@ class Dashboard extends Component {
         return (
             <div>
                 <h4>
-                    Good to see you, <b>{user.name[0].toUpperCase() + user.name.slice(1)}</b>
+                    Good to see you,
+                    <b>
+                        {user.name[0].toUpperCase() + user.name.slice(1)}
+                    </b>
                 </h4>
                 <button
                     className="btn btn-secondary"

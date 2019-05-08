@@ -1,13 +1,15 @@
 import {
     SET_CURRENT_USER,
-    USER_LOADING
+    USER_LOADING,
+    VERIFY_USER
 } from "../actions/types";
 
 const isEmpty = require("is-empty");
 const initialState = {
     isAuthenticated: false,
     user: {},
-    loading: false
+    loading: false,
+    isConfirmed: false
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +25,11 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: true
             };
+        case VERIFY_USER:
+            return {
+                ...state,
+                isConfirmed: true
+            }
         default:
             return state;
     }
