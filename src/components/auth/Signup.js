@@ -50,7 +50,8 @@ class Signup extends Component {
 			confirmPassword
 		}
 
-		// console.log(signupData);
+		// console.log(userData);
+		
 		if (firstName && lastName && email && password && confirmPassword) {
 			this.props.signupUser(userData, this.props.history)
 		}
