@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signupUser } from '../../actions/authActions';
 
@@ -16,6 +16,20 @@ class Signup extends Component {
 		}
 	}
 
+	componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/dashboard");
+        }
+	}
+	
+	componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
 	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
@@ -28,7 +42,7 @@ class Signup extends Component {
 		this.setState({ isSubmitted: true })
 		const { firstName, lastName, email, password, confirmPassword } = this.state;
 
-		const signupData = {
+		const userData = {
 			firstName,
 			lastName,
 			email,
@@ -38,7 +52,7 @@ class Signup extends Component {
 
 		// console.log(signupData);
 		if (firstName && lastName && email && password && confirmPassword) {
-			this.props.signupUser(signupData)
+			this.props.signupUser(userData, this.props.history)
 		}
 	}
 
@@ -129,4 +143,12 @@ class Signup extends Component {
 	}
 }
 
-export default connect(null, { signupUser })(Signup);
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+	mapStateToProps,
+	{ signupUser }
+)(withRouter(Signup));

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 
@@ -10,6 +10,23 @@ class Login extends Component {
             email: '',
             password: '',
             isSubmitted: false
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/dashboard");
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/dashboard"); // push user to dashboard when they login
+        }
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
         }
     }
 
@@ -25,7 +42,7 @@ class Login extends Component {
         this.setState({ isSubmitted: true })
         const { email, password } = this.state;
 
-        const loginData = {
+        const userData = {
             email,
             password
         }
@@ -33,7 +50,7 @@ class Login extends Component {
         // console.log(loginData);
 
         if (email && password) {
-            this.props.loginUser(loginData);
+            this.props.loginUser(userData);
         }
     }
 
@@ -85,8 +102,12 @@ class Login extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return state;
-}
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+})
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(
+    mapStateToProps,
+    { loginUser }
+)(withRouter(Login));
