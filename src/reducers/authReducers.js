@@ -6,10 +6,10 @@ import {
 
 const isEmpty = require("is-empty");
 const initialState = {
-    isAuthenticated: false,
     user: {},
-    loading: false,
-    isConfirmed: false
+    isAuthenticated: false,
+    isConfirmed: false,
+    isLoading: false
 };
 
 export default function (state = initialState, action) {
@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
         case USER_LOADING:
             return {
                 ...state,
-                loading: true
+                isLoading: true
             };
         case VERIFY_USER:
             return {

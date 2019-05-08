@@ -55,4 +55,7 @@ const mapStateToProps = state => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { verifyUser })(withRouter(Confirmation))
+export default connect(
+    mapStateToProps,
+    { verifyUser }
+)(withRouter(Confirmation))
