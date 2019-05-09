@@ -36,7 +36,7 @@ class Confirmation extends Component {
                     <div
                         style={{ 
                         textAlign: "center",
-                            visibility: this.state.isConfirmed ? 'visible' : 'hidden'}}
+                            visibility: isConfirmed ? 'visible' : 'hidden'}}
                         className="alert alert-success"
                         role="alert"
                     >
