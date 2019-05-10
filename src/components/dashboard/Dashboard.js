@@ -14,7 +14,7 @@ class Dashboard extends Component {
                 <h4>
                     Good to see you,
                     <b>
-                        {user.name[0].toUpperCase() + user.name.slice(1)}
+                        {user.role[0].toUpperCase() + user.role.slice(1)}
                     </b>
                 </h4>
                 <button
@@ -22,7 +22,7 @@ class Dashboard extends Component {
                     onClick={this.onLogoutClick}
                 >
                     Logout
-            </button>
+                </button>
             </div>
         );
     }

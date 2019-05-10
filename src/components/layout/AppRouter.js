@@ -8,35 +8,22 @@ import Login from '../auth/Login';
 import Signup from '../auth/Signup';
 import Confirmation from '../auth/Confirmation';
 
+import Admin from '../dashboard/users/Admin';
+import Customer from '../dashboard/users/Customer';
+import Moderator from '../dashboard/users/Moderator';
+
 const routes = [
-    {
-        path: "/",
-        exact: true,
-        main: () => <Landing />
-    },
-    {
-        path: "/login",
-        exact: true,
-        main: () => <Login />
-    },
-    {
-        path: "/signup",
-        exact: true,
-        main: () => <Signup />
-    },
-    {
-        path: "/confirmation",
-        exact: true,
-        main: () => <Confirmation />
-    }
+    { path: "/", exact: true, main: () => <Landing /> },
+    { path: "/login", exact: true, main: () => <Login /> },
+    { path: "/signup", exact: true, main: () => <Signup /> },
+    { path: "/confirmation", exact: true, main: () => <Confirmation /> }
 ];
 
 const privateRoutes = [
-    {
-        path: "/dashboard",
-        exact: true,
-        main: () => <Dashboard />
-    }
+    { path: "/dashboard", exact: true, main: () => <Dashboard /> },
+    { path: "/admin", exact: true, main: () => <Admin /> },
+    { path: "/customer", exact: true, main: () => <Customer /> },
+    { path: "/moderator", exact: true, main: () => <Moderator /> }
 ];
 
 function AppRouter() {
