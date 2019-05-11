@@ -137,6 +137,7 @@ class Signup extends Component {
 					>
 						Signup
           			</button>
+					<p>OR</p>
 					<Link to="/login" className="btn btn-link">Login</Link>
 				</div>
 			</div>

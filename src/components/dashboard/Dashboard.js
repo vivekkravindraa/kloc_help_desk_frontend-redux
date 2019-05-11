@@ -11,18 +11,18 @@ class Dashboard extends Component {
         const { user } = this.props.auth;
         return (
             <div>
-                <h4>
-                    Good to see you,
-                    <b>
-                        {user.role[0].toUpperCase() + user.role.slice(1)}
-                    </b>
-                </h4>
                 <button
                     className="btn btn-secondary"
                     onClick={this.onLogoutClick}
                 >
                     Logout
                 </button>
+                <h4>
+                    Good to see you,
+                    <b>
+                        {user.name[0].toUpperCase() + user.name.slice(1)}
+                    </b>
+                </h4>
             </div>
         );
     }
